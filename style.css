@@ -3,7 +3,9 @@
     --color-present: #c9b458;
     --color-correct: #6aaa64;
     --color-absent: #787c7e;
-    --tile-text-color: #ffffff;
+    --tile-text-color: #000000;
+    --tile-border-color: #d3d6da;
+    --tile-active-border-color: #878a8c;
     --key-text-color: #000000;
     --key-evaluated-text-color: #ffffff;
     --key-bg: #d3d6da;
@@ -15,6 +17,9 @@
         --color-present: #b59f3b;
         --color-correct: #538d4e;
         --color-absent: #3a3a3c;
+        --tile-text-color: #ffffff;
+        --tile-border-color: #3a3a3c;
+        --tile-active-border-color: #565758;
         --key-text-color: #ffffff;
         --key-bg: #818384;
     }
@@ -30,11 +35,65 @@ body{
     background-color: var(--board-bg);
     display: flex;
     flex-direction: column;
+    align-items: center;
     min-height: 100vh;
     margin: 0;
     padding: 1em;
-    font-size: clamp(.5rem, 2.5vmin, 1.5rem);
+    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+    overflow-y: hidden;
+    /* font-size: clamp(.5rem, 2.5vmin, 1.5rem); */
+}
+
+/* -------------- GAME BOARD -------------- */
+
+.game-board{
+    flex-grow: 1;
+    display: grid;
+    align-content: center;
+    grid-template-columns: repeat(5, 56px);
+    grid-template-rows: repeat(6, 56px);
+    gap: .35em;
+    margin-bottom: 1em;
+}
+
+.tile{
+    height: 100%;
+    color: var(--tile-text-color);
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 0.05em;
+    user-select: none;
+}
+
+.tile:not([data-state]) {
+    border: 0.08em solid var(--tile-border-color);
+}
+.tile[data-state='active'] {
+    border: 0.08em solid var(--tile-active-border-color);
+}
+
+.tile[data-state='correct'] {
+    background-color: var(--color-correct);
+}
+
+.tile[data-state='present'] {
+    background-color: var(--color-present);
+}
+.tile[data-state='absent'] {
+    background-color: var(--color-absent);
+}
+
+.tile[data-animation='pop'] {
+    animation-name: PopIn;
+    animation-duration: 100ms;
+}
+
+.tile:hover{
+    animation: Bounce 1s;
 }
 
 /* -------------- KEYBOARD -------------- */
@@ -48,7 +107,6 @@ body{
 
 .key{
     font-size: clamp(.2rem, 2vmin, 1rem);
-    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
     grid-column: span 2;
     border: .25em;
     border-radius: .25em;
