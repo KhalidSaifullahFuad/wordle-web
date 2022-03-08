@@ -37,6 +37,8 @@ body{
     align-items: center;
 }
 
+/* -------------- KEYBOARD -------------- */
+
 .keyboard{
     display: grid;
     grid-template-columns: repeat(20, minmax(auto, 1.1em));
@@ -61,6 +63,11 @@ body{
     font-weight: bold;
     cursor: pointer;
     user-select: none;
+    transition: .1s;
+}
+
+.key.large{
+    grid-column: span 3;
 }
 
 .key.large{
@@ -70,4 +77,24 @@ body{
 .key > svg{
     width: 1.75em;
     height: 1.75em;
+}
+
+.key.absent{
+    background-color: var(--color-absent);
+    color: var(--key-evaluated-text-color);
+}
+
+.key.present{
+    background-color: var(--color-present);
+    color: var(--key-evaluated-text-color);
+}
+
+.key.correct{
+    background-color: var(--color-correct);
+    color: var(--key-evaluated-text-color);
+}
+
+.key:hover, .key:active{
+    outline: #121213;
+    transform: scale(1.1);
 }
