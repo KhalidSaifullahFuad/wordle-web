@@ -3,7 +3,7 @@
  <img width=200px height=200px src="https://i.imgur.com/FxL5qM0.jpg" alt="Bot logo"></a>
 </p>
 
-<h3 align="center">Project Title</h3>
+<h3 align="center">WORDLE</h3>
 
 <div align="center">
 
@@ -17,9 +17,11 @@
 
 ---
 
-<p align="center"> 🤖 Few lines describing what your bot does.
-    <br> 
-</p>
+<div align="center"> 
+
+ WORDLE is word game where you have six tries to guess the word.
+
+</div>
 
 ## 📝 Table of Contents
 
@@ -138,6 +140,7 @@ To see an example project on how to deploy your bot, please see my own configura
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
-- Hat tip to anyone whose code was used
+- [Old Wordle](https://www.powerlanguage.co.uk/wordle/)
+- [NYT Wordle](https://www.nytimes.com/games/wordle/index.html)
 - Inspiration
 - References
