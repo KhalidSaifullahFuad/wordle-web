@@ -38,22 +38,42 @@ body{
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    padding: 1em;
+    padding: 0.5em;
     font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
     overflow-y: hidden;
     /* font-size: clamp(.5rem, 2.5vmin, 1.5rem); */
 }
 
+/* -------------- HEADER -------------- */
+
+header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    /* height: var(--header-height); */
+    color: var(--tile-text-color);
+    border-bottom: 1px solid var(--tile-border-color);
+}
+
+.title{
+    font-size: 1.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: .1em;
+}
+
 /* -------------- GAME BOARD -------------- */
 
 .game-board{
-    flex-grow: 1;
     display: grid;
     align-content: center;
-    grid-template-columns: repeat(5, 56px);
-    grid-template-rows: repeat(6, 56px);
+    grid-template-columns: repeat(5, 3.5em);
+    grid-template-rows: repeat(6, 3.5em);
+    flex-grow: 1;
     gap: .35em;
-    margin-bottom: 1em;
+    padding: 1.5em 0;
 }
 
 .tile{
@@ -65,15 +85,18 @@ body{
     font-size: 2em;
     font-weight: bold;
     text-transform: uppercase;
-    border-radius: 0.05em;
+    border-radius: 0.1em;
     user-select: none;
 }
 
 .tile:not([data-state]) {
     border: 0.08em solid var(--tile-border-color);
 }
+
 .tile[data-state='active'] {
     border: 0.08em solid var(--tile-active-border-color);
+    /* animation-name: PopIn;
+    animation-duration: 100ms; */
 }
 
 .tile[data-state='correct'] {
@@ -92,8 +115,26 @@ body{
     animation-duration: 100ms;
 }
 
-.tile:hover{
-    animation: Bounce 1s;
+.tile.shake {
+    animation-name: Shake;
+    animation-duration: 600ms;
+}
+
+.tile[data-animation='flip-in'] {
+    animation-name: FlipIn;
+    animation-duration: 250ms;
+    animation-timing-function: ease-in;
+}
+
+.tile[data-animation='flip-out'] {
+    animation-name: FlipOut;
+    animation-duration: 250ms;
+    animation-timing-function: ease-in;
+}
+
+.tile[data-animation='bounce'] {
+    animation-name: Bounce;
+    animation-duration: 1000ms;
 }
 
 /* -------------- KEYBOARD -------------- */
@@ -122,10 +163,6 @@ body{
     cursor: pointer;
     user-select: none;
     transition: .1s;
-}
-
-.key.large{
-    grid-column: span 3;
 }
 
 .key.large{
