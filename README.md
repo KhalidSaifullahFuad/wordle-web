@@ -1,6 +1,7 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/FxL5qM0.jpg" alt="Bot logo"></a>
+ <img src="https://user-images.githubusercontent.com/64584169/158031083-b8c49e30-38ee-441a-999d-195a79d390e1.png" alt="Wordle logo"></a>
+<!--   ![LOGO](https://user-images.githubusercontent.com/64584169/158031083-b8c49e30-38ee-441a-999d-195a79d390e1.png) -->
 </p>
 
 <h3 align="center">WORDLE</h3>
