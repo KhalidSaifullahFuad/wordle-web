@@ -5,6 +5,7 @@
     --color-absent: #787c7e;
     --tile-text-color: #000000;
     --tile-border-color: #d3d6da;
+    --tile-active-text-color: #FFFFFF;
     --tile-active-border-color: #878a8c;
     --key-text-color: #000000;
     --key-evaluated-text-color: #ffffff;
@@ -101,13 +102,16 @@ header{
 
 .tile[data-state='correct'] {
     background-color: var(--color-correct);
+    color: var(--tile-active-text-color);
 }
 
 .tile[data-state='present'] {
     background-color: var(--color-present);
+    color: var(--tile-active-text-color);
 }
 .tile[data-state='absent'] {
     background-color: var(--color-absent);
+    color: var(--tile-active-text-color);
 }
 
 .tile[data-animation='pop'] {
@@ -115,7 +119,7 @@ header{
     animation-duration: 100ms;
 }
 
-.tile.shake {
+.tile[data-animation='shake'] {
     animation-name: Shake;
     animation-duration: 600ms;
 }
