@@ -9,9 +9,8 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![Platform](https://img.shields.io/badge/platform-reddit-orange.svg)](https://www.reddit.com/user/Wordbook_Bot)
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/KhalidSaifullahFuad/WORDLE.svg)](https://github.com/KhalidSaifullahFuad/WORDLE/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/KhalidSaifullahFuad/WORDLE.svg)](https://github.com/KhalidSaifullahFuad/WORDLE/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
@@ -33,7 +32,7 @@
 - [Getting Started](#getting_started)
 - [Deploying your own bot](#deployment)
 - [Built Using](#built_using)
-<!-- - [TODO](../TODO.md) -->
+- [TODO](../TODO.md)
 - [Contributing](../CONTRIBUTING.md)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
@@ -129,9 +128,9 @@ To see an example project on how to deploy your bot, please see my own configura
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [HTML](https://praw.readthedocs.io/en/latest/) - Structure
-- [CSS](https://www.heroku.com/) - Design & Animation
-- [JavaScript](https://www.heroku.com/) - Functionality
+- [HTML](https://https://www.w3schools.com/html/) - Structure
+- [CSS](https://www.w3schools.com/css/) - Design & Animation
+- [JavaScript](https://www.w3schools.com/js/) - Functionality
 - [Heroku](https://www.heroku.com/) - SaaS hosting platform
 
 ## ✍️ Authors <a name = "authors"></a>
@@ -141,7 +140,7 @@ To see an example project on how to deploy your bot, please see my own configura
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
-- [Old Wordle](https://www.powerlanguage.co.uk/wordle/)
-- [NYT Wordle](https://www.nytimes.com/games/wordle/index.html)
 - Inspiration
+  - [Wordle](https://www.powerlanguage.co.uk/wordle/)
 - References
+  - [New York Times Article](https://www.nytimes.com/2022/01/03/technology/wordle-word-game-creator.html)
