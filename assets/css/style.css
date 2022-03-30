@@ -87,6 +87,7 @@ header{
     font-weight: bold;
     text-transform: uppercase;
     border-radius: 0.1em;
+    /* transition: transform 250ms; */
     user-select: none;
 }
 
@@ -124,6 +125,17 @@ header{
     animation-duration: 600ms;
 }
 
+.tile[data-animation='bounce'] {
+    animation-name: Bounce;
+    animation-duration: 1000ms;
+}
+
+.tile[data-animation='flip'] {
+    animation-name: Flip;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+}
+
 .tile[data-animation='flip-in'] {
     animation-name: FlipIn;
     animation-duration: 250ms;
@@ -136,10 +148,6 @@ header{
     animation-timing-function: ease-in;
 }
 
-.tile[data-animation='bounce'] {
-    animation-name: Bounce;
-    animation-duration: 1000ms;
-}
 
 /* -------------- KEYBOARD -------------- */
 
@@ -176,6 +184,7 @@ header{
 .key > svg{
     width: 1.75em;
     height: 1.75em;
+    pointer-events: none;
 }
 
 .key.absent{
