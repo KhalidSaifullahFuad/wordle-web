@@ -81,3 +81,20 @@ function setSingleTileAnimation(tile, animation){
 //         }, (delay*index));
 //     });
 // }
+
+function showAlert(message, duration=200){
+    const alert = document.createElement("div");
+    alert.textContent = message;
+    alert.classList.add("alert");
+    alertContainer.prepend(alert);
+
+    if(duration != null){
+        setTimeout(()=>{
+            alert.classList.add("hide");
+            alert.addEventListener("transitionend", () => {
+                alert.remove();
+            });
+        }, duration)
+    }
+
+}
