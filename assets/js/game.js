@@ -26,26 +26,17 @@ function checkGuess(){
 
     if(guessWord.length == 0){
         const emptyTilesRow = [...guessGrid.querySelectorAll(":not([data-letter])")].slice(0, WORD_LENGTH);
-        emptyTilesRow.forEach((tile) => {
-            tile.dataset.animation = "shake";
-            tile.addEventListener("animationend", () => tile.removeAttribute("data-animation"));
-        });
+        setAnimation(emptyTilesRow, "shake");
     }
     else if(guessWord.length != WORD_LENGTH) {
-        activeTiles.forEach((tile) => {
-            // setAnimation(tile, "shake")
-            tile.dataset.animation = "shake";
-            tile.addEventListener("animationend", () => tile.removeAttribute("data-animation"));
-        });
+        const currentRow = [...guessGrid.querySelectorAll(".tile")].slice(NUMBER_OF_GUESSES*WORD_LENGTH, (NUMBER_OF_GUESSES+1)*WORD_LENGTH);
+        setAnimation(currentRow, "shake")
+        showAlert("Not enough letters");
     }
-    if(guessWord === wordle){
-        // activeTiles.forEach((tile) => {
-        //     tile.dataset.state = "correct";
-        //     setAnimation(tile, "bounce", 250);
-        // });
-        // setAnimation(activeTiles, "bounce", 200, "correct");
+    else if(!VALID_WORDS.includes(guessWord) && !DAILY_WORDS.includes(guessWord)){
+        showAlert("Not in word list")
+        setAnimation(activeTiles, "shake");
     }
-
 }
 
 function deleteLetter(){
@@ -62,25 +53,21 @@ function updateLetter(key){
     emptyTile.dataset.state = "active";
     emptyTile.dataset.letter = key;
     emptyTile.textContent = key;
-    // setAnimation(emptyTile, "pop");
-    emptyTile.dataset.animation = "pop";
-    emptyTile.addEventListener("animationend", () => emptyTile.removeAttribute("data-animation"));
+    setAnimation([emptyTile], "pop");
 }
 
-function setSingleTileAnimation(tile, animation){
-    tile.dataset.state = state;
-    setAnimation(tile, animation, duration);
+function setAnimation(tiles, animation, delay=0, state=null){
+    tiles.forEach((tile, index) => {
+            if(state!=null) tile.dataset.state = state;
+            setTimeout(() => {
+                    tile.dataset.animation = animation;
+                    tile.addEventListener("animationend", () => {
+                        tile.removeAttribute("data-animation");
+                    }, {once: true});
+                }, (delay*index));
+    });
 }
 
-// function setAnimation(tiles, animation, delay=0, state="active"){
-//     tiles.forEach((tile, index) => {
-//         tile.dataset.state = state;
-//         setTimeout(() => {
-//             tile.dataset.animation = animation;
-//             tile.addEventListener("animationend", () => tile.removeAttribute("data-animation"));
-//         }, (delay*index));
-//     });
-// }
 
 function showAlert(message, duration=200){
     const alert = document.createElement("div");
