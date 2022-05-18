@@ -4,20 +4,41 @@ const WORD_LENGTH = 5;
 const CONGRATS_MESSAGES = ["Genius", "Magnificent", "Impressive", "Splendid", "Great", "Phew"];
 
 const guessGrid = document.querySelector(".game-board");
+const alertContainer = document.querySelector(".alert-container");
+const keyboard = document.querySelector(".keyboard");
 const getActiveTiles = () => guessGrid.querySelectorAll("[data-state='active']");
 
-document.addEventListener("keydown", (event) => {
-    if(event.key == "Enter")
-        checkGuess();
+startGame();
 
-    if(event.key == "Backspace" || event.key == "Delete")
+function startGame(){
+    document.addEventListener("keydown", handleKeyPress);
+    document.addEventListener("click", handleMouseClick);
+}
+
+function pauseGame(){
+    document.removeEventListener("keydown", handleKeyPress);
+    document.removeEventListener("click", handleMouseClick);
+}
+
+function handleMouseClick(event){
+    if(event.target.matches("[data-key]"))
+        updateLetter(event.target.dataset.key);
+    else if(event.target.matches("[data-enter]"))
+        submitWord();
+    else if(event.target.matches("[data-backspace]"))
         deleteLetter();
+}
 
+function handleKeyPress(event){
     if(event.key.match(/^[a-zA-Z]$/))
         updateLetter(event.key.toLowerCase());
-});
+    else if(event.key == "Enter")
+        submitWord();
+    else if(event.key == "Backspace" || event.key == "Delete")
+        deleteLetter();
+}
 
-function checkGuess(){
+function submitWord(){
     const wordle = DAILY_WORDS[TODAY_WORDLE_NUMBER];
     const activeTiles = [...getActiveTiles()];
     const guessWord = activeTiles.reduce((word, tile) => {
@@ -67,7 +88,6 @@ function setAnimation(tiles, animation, delay=0, state=null){
                 }, (delay*index));
     });
 }
-
 
 function showAlert(message, duration=200){
     const alert = document.createElement("div");
