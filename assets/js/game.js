@@ -58,6 +58,38 @@ function submitWord(){
         showAlert("Not in word list")
         setAnimation(activeTiles, "shake");
     }
+    else {
+        pauseGame();
+        activeTiles.forEach((tile, index)=>{
+            const letter = tile.dataset.letter;
+            const key = keyboard.querySelector(`[data-key=${letter}]`);
+
+            setTimeout(() => {
+                tile.dataset.animation = "flip";
+            }, index * 250);
+
+            tile.addEventListener("animationend", () => {
+                if(wordle[index] == letter){
+                    tile.dataset.state = "correct"
+                    key.classList.add("correct");
+                }
+                else if(wordle.includes(letter)){
+                    tile.dataset.state = "present"
+                    key.classList.add("present");
+                }
+                else{
+                    tile.dataset.state = "absent"
+                    key.classList.add("absent");
+                }
+            });
+            if(index === activeTiles.length-1){
+                tile.addEventListener("animationend", () => {
+                    startGame();
+                }, {once: true});
+            }
+
+        });
+    }
 }
 
 function deleteLetter(){
